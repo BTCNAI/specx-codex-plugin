@@ -1,6 +1,6 @@
 {
   "name": "specx-codex-plugin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Universal spec-driven agent governance and execution contract runtime for Codex.",
   "license": "MIT",
   "author": {

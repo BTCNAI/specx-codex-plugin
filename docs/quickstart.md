@@ -11,7 +11,7 @@ codex plugin marketplace add BTCNAI/specx-codex-marketplace
 Pinned install:
 
 ```bash
-codex plugin marketplace add https://github.com/BTCNAI/specx-codex-marketplace.git --ref v0.2.0
+codex plugin marketplace add https://github.com/BTCNAI/specx-codex-marketplace.git --ref v0.2.1
 ```
 
 ## Validate A Contract

@@ -1,12 +1,16 @@
 import asyncio
 import json
+import sys
 import unittest
 from pathlib import Path
 
-from scripts.specx_mcp import build_server
-
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.specx_mcp import build_server
+
 VALID = ROOT / "examples" / "generic_research_contract.json"
 
 
