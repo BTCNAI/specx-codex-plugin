@@ -11,6 +11,12 @@ Each tool accepts a SpecX contract JSON object as `contract`.
 
 ## Local Server
 
+Install runtime dependencies:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
 The plugin manifest registers:
 
 ```json

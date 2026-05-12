@@ -17,7 +17,7 @@ codex plugin marketplace add BTCNAI/specx-codex-marketplace
 Or pin the stable release:
 
 ```bash
-codex plugin marketplace add https://github.com/BTCNAI/specx-codex-marketplace.git --ref v0.2.1
+codex plugin marketplace add https://github.com/BTCNAI/specx-codex-marketplace.git --ref v0.2.2
 ```
 
 ## What It Provides
@@ -54,6 +54,12 @@ Included MCP tools:
 - `specx.compile`
 - `specx.verify`
 - `specx.explain`
+
+Install MCP runtime dependencies before running MCP tools:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
 
 ## Contract Shape
 
