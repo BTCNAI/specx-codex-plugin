@@ -1,0 +1,85 @@
+{
+  "contract_id": "demo-multi-agent-system-001",
+  "version": "0.1.0",
+  "objective": "Run a multi-agent workflow through a contract-first runtime with verifier-enforced failure states.",
+  "domain": "multi-agent-governance",
+  "task_type": "contract-first-runtime",
+  "required_agents": [
+    {
+      "agent_id": "workflow_planner",
+      "role_spec": "Translate the user task into a governed execution plan with explicit roles, tools, evidence, gates, artifacts, and failure states.",
+      "execution_spec": "Compile the plan before any execution agent acts. Block if requirements are incomplete.",
+      "output_spec": "Execution plan with agent assignments, gate order, evidence requirements, and artifact contracts."
+    },
+    {
+      "agent_id": "execution_agent",
+      "role_spec": "Execute only the approved plan and only when required gates and evidence are satisfied.",
+      "execution_spec": "Run governed steps, produce artifacts, and stop when a gate fails or evidence is missing.",
+      "output_spec": "Step execution log, produced artifacts, gate results, and failure state if blocked or failed."
+    },
+    {
+      "agent_id": "verifier_agent",
+      "role_spec": "Verify gate results, evidence, artifact completeness, and failure semantics.",
+      "execution_spec": "Reject fake success, silent fallback, and uncontrolled agent execution.",
+      "output_spec": "Verifier report with pass/fail status, blocked reasons, and missing evidence."
+    }
+  ],
+  "required_tools": [
+    "contract_compiler",
+    "workflow_runner",
+    "gate_checker",
+    "artifact_inspector",
+    "test_runner"
+  ],
+  "required_evidence": [
+    "compiled_execution_plan",
+    "gate_results",
+    "evidence_bundle",
+    "artifact_index",
+    "verifier_report"
+  ],
+  "gates": [
+    {
+      "gate_id": "contract_gate",
+      "condition": "Execution plan exists and contains required agents, tools, evidence, gates, artifacts, and failure semantics.",
+      "on_failure": "blocked_missing_contract"
+    },
+    {
+      "gate_id": "execution_gate",
+      "condition": "Execution agent has required evidence and approved plan before acting.",
+      "on_failure": "blocked_uncontrolled_execution"
+    },
+    {
+      "gate_id": "verification_gate",
+      "condition": "Verifier confirms evidence, artifacts, and failure semantics before success.",
+      "on_failure": "failed_verification"
+    }
+  ],
+  "expected_artifacts": [
+    "execution_plan",
+    "gate_log",
+    "artifact_index",
+    "verifier_report"
+  ],
+  "failure_semantics": {
+    "on_missing_contract": "blocked",
+    "on_missing_evidence": "blocked",
+    "on_gate_failure": "blocked",
+    "on_verification_failure": "failed",
+    "on_unsupported_capability": "unsupported"
+  },
+  "execution_constraints": {
+    "no_fake_success": true,
+    "no_silent_fallback": true,
+    "no_hardcoded_fallback": true,
+    "contract_first_runtime": true,
+    "explicit_failure_state": true
+  },
+  "human_approval": {
+    "required": true,
+    "before": [
+      "external_side_effects"
+    ]
+  },
+  "unsupported_features": []
+}

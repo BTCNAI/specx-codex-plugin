@@ -1,0 +1,20 @@
+{
+  "name": "specx-codex-plugin",
+  "interface": {
+    "displayName": "SpecX Universal Agent Governance Runtime"
+  },
+  "plugins": [
+    {
+      "name": "specx-codex-plugin",
+      "source": {
+        "source": "local",
+        "path": "./plugins/specx-codex-plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

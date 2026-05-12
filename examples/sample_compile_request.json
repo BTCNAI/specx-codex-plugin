@@ -1,0 +1,25 @@
+{
+  "user_task": "Create a governed workflow contract for a multi-agent technical evaluation.",
+  "domain": "general-agent-workflow",
+  "task_type": "contract-generation-request",
+  "constraints": [
+    "contract first",
+    "gate-bound execution",
+    "evidence required for claims",
+    "no fake success",
+    "no silent fallback"
+  ],
+  "required_outputs": [
+    "execution_contract",
+    "verification_criteria"
+  ],
+  "approval_policy": {
+    "human_approval_required": true,
+    "approval_stage": "before release"
+  },
+  "failure_policy": {
+    "missing_required_field": "failed",
+    "unsupported_capability": "unsupported",
+    "gate_failure": "blocked"
+  }
+}

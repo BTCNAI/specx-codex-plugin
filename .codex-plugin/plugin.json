@@ -1,0 +1,38 @@
+{
+  "name": "specx-codex-plugin",
+  "version": "0.1.0",
+  "description": "Universal spec-driven agent governance and execution contract runtime for Codex.",
+  "license": "MIT",
+  "author": {
+    "name": "BTCNAI",
+    "url": "https://github.com/BTCNAI"
+  },
+  "homepage": "https://github.com/BTCNAI/specx-codex-plugin",
+  "repository": "https://github.com/BTCNAI/specx-codex-plugin",
+  "keywords": [
+    "spec-driven-execution",
+    "agent-governance",
+    "workflow-contracts",
+    "verification",
+    "codex-plugin"
+  ],
+  "interface": {
+    "displayName": "SpecX Universal Agent Governance Runtime",
+    "shortDescription": "Spec-driven execution contracts and governance for Codex workflows.",
+    "longDescription": "SpecX provides universal execution contracts, gates, evidence requirements, artifact expectations, failure semantics, and verification rules for governed Codex workflows.",
+    "developerName": "SpecX contributors",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/BTCNAI/specx-codex-plugin",
+    "defaultPrompt": [
+      "Use SpecX to compile this task into a governed execution contract.",
+      "Use SpecX to verify whether this workflow has agents, tools, evidence, gates, artifacts, and failure semantics.",
+      "Use SpecX to explain the execution contract before workflow execution."
+    ],
+    "brandColor": "#2563EB"
+  },
+  "skills": "./skills/"
+}

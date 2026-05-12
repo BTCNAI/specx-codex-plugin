@@ -1,0 +1,65 @@
+{
+  "contract_id": "generic-content-001",
+  "version": "0.1.0",
+  "objective": "Generate, review, and approve a multi-step content production pipeline.",
+  "domain": "content-operations",
+  "task_type": "multi-step-content-pipeline",
+  "required_agents": [
+    {
+      "agent_id": "content_planner",
+      "role_spec": "Define audience, constraints, and production steps.",
+      "execution_spec": "Create a plan before drafting.",
+      "output_spec": "Content production plan."
+    },
+    {
+      "agent_id": "quality_reviewer",
+      "role_spec": "Review claims, tone, compliance, and completeness.",
+      "execution_spec": "Accept only when gates pass.",
+      "output_spec": "Review notes and approval state."
+    }
+  ],
+  "required_tools": [
+    "draft_writer",
+    "review_checker",
+    "artifact_exporter"
+  ],
+  "required_evidence": [
+    "brief",
+    "review_notes",
+    "approval_record"
+  ],
+  "gates": [
+    {
+      "gate_id": "brief_gate",
+      "condition": "Brief contains audience, constraints, and required outputs.",
+      "on_failure": "block_with_missing_brief"
+    },
+    {
+      "gate_id": "approval_gate",
+      "condition": "Reviewer approval is present before release.",
+      "on_failure": "block_with_unapproved_output"
+    }
+  ],
+  "expected_artifacts": [
+    "production_plan",
+    "draft_package",
+    "review_report",
+    "approved_output"
+  ],
+  "failure_semantics": {
+    "on_missing_evidence": "unsupported",
+    "on_gate_failure": "blocked",
+    "on_export_failure": "failed"
+  },
+  "execution_constraints": {
+    "no_fake_success": true,
+    "no_silent_fallback": true,
+    "no_hardcoded_fallback": true,
+    "approval_required_before_release": true
+  },
+  "human_approval": {
+    "required": true,
+    "before": ["release"]
+  },
+  "unsupported_features": []
+}

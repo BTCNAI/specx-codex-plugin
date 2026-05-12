@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SpecX Execution Result",
+  "type": "object",
+  "required": [
+    "ok",
+    "result",
+    "error",
+    "details",
+    "artifacts",
+    "gate_results",
+    "verification_results",
+    "failure_state"
+  ],
+  "properties": {
+    "ok": { "type": "boolean" },
+    "result": { "type": ["object", "null"] },
+    "error": { "type": ["string", "null"] },
+    "details": { "type": "array" },
+    "artifacts": { "type": "array" },
+    "gate_results": { "type": "array" },
+    "verification_results": { "type": "array" },
+    "failure_state": { "type": ["object", "null"] }
+  },
+  "additionalProperties": true
+}

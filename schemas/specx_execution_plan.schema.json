@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SpecX Execution Plan",
+  "type": "object",
+  "required": [
+    "plan_id",
+    "contract_id",
+    "objective",
+    "domain",
+    "task_type",
+    "agents",
+    "tools",
+    "evidence_requirements",
+    "gates",
+    "artifact_plan",
+    "verification_plan",
+    "failure_semantics",
+    "execution_constraints",
+    "status"
+  ],
+  "properties": {
+    "plan_id": { "type": "string" },
+    "contract_id": { "type": "string" },
+    "objective": { "type": "string" },
+    "domain": { "type": "string" },
+    "task_type": { "type": "string" },
+    "agents": { "type": "array" },
+    "tools": { "type": "array" },
+    "evidence_requirements": { "type": "array" },
+    "gates": { "type": "array" },
+    "artifact_plan": { "type": "array" },
+    "verification_plan": { "type": "object" },
+    "failure_semantics": { "type": "object" },
+    "execution_constraints": { "type": "object" },
+    "status": { "type": "string" }
+  },
+  "additionalProperties": true
+}

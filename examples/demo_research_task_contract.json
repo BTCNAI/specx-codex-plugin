@@ -1,0 +1,74 @@
+{
+  "contract_id": "demo-research-task-001",
+  "version": "0.1.0",
+  "objective": "Research a market and produce an evidence-bound decision packet.",
+  "domain": "market-research",
+  "task_type": "research-decision-packet",
+  "required_agents": [
+    {
+      "agent_id": "research_planner",
+      "role_spec": "Define research scope, source criteria, decision questions, and risk categories.",
+      "execution_spec": "Create a source plan before collecting evidence and block if source requirements are unclear.",
+      "output_spec": "Research plan with scope, source criteria, required evidence, and acceptance gates."
+    },
+    {
+      "agent_id": "evidence_analyst",
+      "role_spec": "Analyze only collected evidence and separate supported claims from unsupported claims.",
+      "execution_spec": "Map each major claim to a source, produce risk notes, and mark gaps explicitly.",
+      "output_spec": "Evidence matrix, decision packet, source map, and risk notes."
+    }
+  ],
+  "required_tools": [
+    "web_research",
+    "citation_tracker",
+    "artifact_writer"
+  ],
+  "required_evidence": [
+    "source_list",
+    "claim_to_source_map",
+    "risk_register",
+    "decision_packet"
+  ],
+  "gates": [
+    {
+      "gate_id": "source_quality_gate",
+      "condition": "Sources are relevant, cited, and mapped to claims.",
+      "on_failure": "blocked_missing_sources"
+    },
+    {
+      "gate_id": "evidence_gate",
+      "condition": "Every material claim has supporting evidence or is marked unsupported.",
+      "on_failure": "blocked_unsupported_claims"
+    },
+    {
+      "gate_id": "decision_packet_gate",
+      "condition": "Decision packet includes recommendation, evidence, risks, and alternatives.",
+      "on_failure": "blocked_incomplete_decision_packet"
+    }
+  ],
+  "expected_artifacts": [
+    "research_plan",
+    "evidence_matrix",
+    "decision_packet",
+    "risk_notes"
+  ],
+  "failure_semantics": {
+    "on_missing_evidence": "blocked",
+    "on_source_failure": "failed",
+    "on_gate_failure": "blocked",
+    "on_unsupported_claim": "unsupported"
+  },
+  "execution_constraints": {
+    "no_fake_success": true,
+    "no_silent_fallback": true,
+    "no_hardcoded_fallback": true,
+    "evidence_required_for_claims": true
+  },
+  "human_approval": {
+    "required": true,
+    "before": [
+      "final_decision_release"
+    ]
+  },
+  "unsupported_features": []
+}

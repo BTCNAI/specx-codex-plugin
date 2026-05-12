@@ -1,0 +1,64 @@
+{
+  "contract_id": "generic-research-001",
+  "version": "0.1.0",
+  "objective": "Research a technical market and produce a decision packet.",
+  "domain": "technical-market-research",
+  "task_type": "research-decision-packet",
+  "required_agents": [
+    {
+      "agent_id": "research_planner",
+      "role_spec": "Define research scope, source criteria, and decision questions.",
+      "execution_spec": "Produce a source plan before collection starts.",
+      "output_spec": "Research plan with acceptance criteria."
+    },
+    {
+      "agent_id": "evidence_analyst",
+      "role_spec": "Analyze collected evidence and identify decision tradeoffs.",
+      "execution_spec": "Use only cited evidence and mark unsupported claims.",
+      "output_spec": "Evidence matrix and risk notes."
+    }
+  ],
+  "required_tools": [
+    "file_reader",
+    "web_research",
+    "citation_tracker"
+  ],
+  "required_evidence": [
+    "source_list",
+    "citation_map",
+    "risk_register"
+  ],
+  "gates": [
+    {
+      "gate_id": "source_quality_gate",
+      "condition": "At least three relevant sources are cited and mapped to claims.",
+      "on_failure": "block_with_missing_evidence"
+    },
+    {
+      "gate_id": "decision_packet_gate",
+      "condition": "Recommendation includes evidence, risk, and alternatives.",
+      "on_failure": "block_with_incomplete_artifact"
+    }
+  ],
+  "expected_artifacts": [
+    "research_plan",
+    "evidence_matrix",
+    "decision_packet"
+  ],
+  "failure_semantics": {
+    "on_missing_evidence": "unsupported",
+    "on_gate_failure": "blocked",
+    "on_tool_failure": "failed"
+  },
+  "execution_constraints": {
+    "no_fake_success": true,
+    "no_silent_fallback": true,
+    "no_hardcoded_fallback": true,
+    "evidence_required_for_claims": true
+  },
+  "human_approval": {
+    "required": true,
+    "before": ["final_decision_release"]
+  },
+  "unsupported_features": []
+}
