@@ -10,7 +10,7 @@ Make every task contract-bound, gate-bound, evidence-bound, and failure-explicit
 ## One-Line Install
 
 ```bash
-codex plugin marketplace add https://github.com/BTCNAI/specx-codex-marketplace.git --ref v0.4.0
+codex plugin marketplace add https://github.com/EvanAI0331/specx-codex-marketplace.git --ref v0.4.0
 ```
 
 ## Short Copy
@@ -33,7 +33,7 @@ It turns vague tasks into explicit contracts, then verifies execution results ag
 Install:
 
 ```bash
-codex plugin marketplace add https://github.com/BTCNAI/specx-codex-marketplace.git --ref v0.4.0
+codex plugin marketplace add https://github.com/EvanAI0331/specx-codex-marketplace.git --ref v0.4.0
 ```
 
 ## Demo Hooks
