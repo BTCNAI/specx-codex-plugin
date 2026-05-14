@@ -129,6 +129,7 @@ Demo 3: Multi-agent system
 - `docs/contract-schema-v0.1.md`
 - `docs/execution-result-v0.1.md`
 - `docs/cli.md`
+- `docs/promotion.md`
 
 ## Roadmap
 
